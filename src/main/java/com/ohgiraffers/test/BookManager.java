@@ -1,6 +1,7 @@
 package com.ohgiraffers.test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BookManager {
     private ArrayList<BookDTO> bookList;
@@ -16,15 +17,12 @@ public class BookManager {
 
     public void deleteBook(int index){
         if (index >= 0 && index < bookList.size()) {
-            bookList.remove(index); // 전달받은 index로 삭제
-            System.out.println("도서가 삭제되었습니다.");
-        } else {
-            System.out.println("삭제할 도서가 존재하지 않습니다.");
+            bookList.remove(index);
         }
     }
     public int searchBook(String Title){
         for (int i = 0; i < bookList.size(); i++) {
-            if (bookList.get(i).getTitle().equalsIgnoreCase(Title)) {
+            if (bookList.get(i).getTitle().equals(Title)) {
                 return i; // 도서명이 일치하는 객체를 찾아 해당 인덱스를 리턴
             }
         }
@@ -38,14 +36,27 @@ public class BookManager {
         }
     }
     public void displayAll(){
-        for(BookDTO book : bookList){
-            System.out.println(book);
+        if (bookList.isEmpty()) {
+            System.out.println("출력할 도서가 없습니다.");
+        } else {
+            for (BookDTO book : bookList) {
+                System.out.println(book);
+            }
         }
     }
-//    public ArrayList<BookDTO> sortedBookList(int select){
-//
-//    }
-    public void printBookList(ArrayList<BookDTO> br){
+    public ArrayList<BookDTO> sortedBookList(int select){
+        ArrayList<BookDTO> sortedList = new ArrayList<>(bookList);
+        if (select == 1) {
+            Collections.sort(sortedList, new AscCategory());
+        } else if (select == 2) {
+            Collections.sort(sortedList, new DescCategory());
+        }
+        return sortedList;
 
+    }
+    public void printBookList(ArrayList<BookDTO> br){
+        for (BookDTO book : br) {
+            System.out.println(book);
+        }
     }
 }

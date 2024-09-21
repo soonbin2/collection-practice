@@ -49,25 +49,16 @@ public class BookDTO {
 
     @Override
     public String toString() {
-//        public void category2(int category){
-//            if(category == 1){
-//                System.out.println("1 : 인문");
-//            }else if(category == 2){
-//                System.out.println("2 : 자연과학");
-//            }else if(category == 3){
-//                System.out.println("3 : 의료");
-//            }else if(category ==4){
-//                System.out.println("4 : 기타");
-//            }else{
-//                System.out.println("없는 도서분류코드 입니다.");
-//            }
-//        }
-
-        return "BookDTO{" +
-                "bNo=" + bNo +
-                ", category=" + category +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                '}';
+        String categoryName;
+        switch (category) {
+            case 1: categoryName = "인문"; break;
+            case 2: categoryName = "자연과학"; break;
+            case 3: categoryName = "의료"; break;
+            case 4: categoryName = "기타"; break;
+            default: categoryName = "미분류"; break; // In case of an unexpected value
+        }
+        return String.format("도서 번호: %d, 제목: '%s', 저자: '%s', 장르: %s", bNo, title, author, categoryName);
     }
+
+
 }
