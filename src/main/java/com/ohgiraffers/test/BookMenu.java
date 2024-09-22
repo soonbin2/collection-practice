@@ -66,6 +66,7 @@ public class BookMenu {
                break;
             case 6:
                System.out.println("프로그램을 종료합니다.");
+               sc.close();
                return; // 종료
             default:
                System.out.println("잘못된 메뉴 선택입니다.");
