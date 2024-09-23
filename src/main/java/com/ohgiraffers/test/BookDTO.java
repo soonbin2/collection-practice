@@ -57,7 +57,8 @@ public class BookDTO {
             case 4: categoryName = "기타"; break;
             default: categoryName = "미분류"; break; // In case of an unexpected value
         }
-        return String.format("도서 번호: %d, 제목: '%s', 저자: '%s', 장르: %s", bNo, title, author, categoryName);
+//        return String.format("도서 번호: %d, 제목: '%s', 저자: '%s', 장르: %s", bNo, title, author, categoryName);
+        return ("도서번호 : " + bNo + ", " + "제목 : " +   title+", " + "저자 : " +  author+", " + "장르 : " + categoryName );
     }
 
 

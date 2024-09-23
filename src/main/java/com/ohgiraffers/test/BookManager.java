@@ -47,9 +47,9 @@ public class BookManager {
     public ArrayList<BookDTO> sortedBookList(int select){
         ArrayList<BookDTO> sortedList = new ArrayList<>(bookList);
         if (select == 1) {
-            Collections.sort(sortedList, new AscCategory());
+            bookList.sort( new AscCategory());
         } else if (select == 2) {
-            Collections.sort(sortedList, new DescCategory());
+            bookList.sort( new DescCategory());
         }
         return sortedList;
 
